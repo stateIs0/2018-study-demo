@@ -1,0 +1,92 @@
+Thread 0x6fe4380
+  at java.net.SocketInputStream.socketRead0(Ljava/io/FileDescriptor;[BIII)I (Native Method)
+  at java.net.SocketInputStream.socketRead(Ljava/io/FileDescriptor;[BIII)I (SocketInputStream.java:116)
+  at java.net.SocketInputStream.read([BIII)I (SocketInputStream.java:171)
+  at java.net.SocketInputStream.read([BII)I (SocketInputStream.java:141)
+  at sun.nio.cs.StreamDecoder.readBytes()I (StreamDecoder.java:284)
+  at sun.nio.cs.StreamDecoder.implRead([CII)I (StreamDecoder.java:326)
+  at sun.nio.cs.StreamDecoder.read([CII)I (StreamDecoder.java:178)
+  at java.io.InputStreamReader.read([CII)I (InputStreamReader.java:184)
+  at java.io.BufferedReader.fill()V (BufferedReader.java:161)
+  at java.io.BufferedReader.readLine(Z)Ljava/lang/String; (BufferedReader.java:324)
+  at java.io.BufferedReader.readLine()Ljava/lang/String; (BufferedReader.java:389)
+  at com.intellij.rt.execution.application.AppMainV2$1.run()V (AppMainV2.java:64)
+
+  locals:
+    objectId=0x7a2aa70, line=1
+    objectId=0x71f3a38, line=1
+    objectId=0x7a2aaa0, line=1
+    objectId=0x7a2aa70, line=2
+    objectId=0x7a2aaa0, line=2
+    objectId=0x71f3a38, line=2
+    objectId=0x7a2aa70, line=3
+    objectId=0x7a2aaa0, line=3
+    objectId=0x7a2cab0, line=4
+    objectId=0x7a2cab0, line=5
+    objectId=0x7a2cad8, line=5
+    objectId=0x7a30ae8, line=5
+    objectId=0x6ff6ec0, line=5
+    objectId=0x7a2cab0, line=6
+    objectId=0x7a2cad8, line=6
+    objectId=0x7a30b18, line=6
+    objectId=0x7a30b18, line=7
+    objectId=0x7a2cad8, line=7
+    objectId=0x7a30b30, line=8
+    objectId=0x7a30b30, line=9
+    objectId=0x7a30b18, line=9
+    objectId=0x7a30b30, line=10
+    objectId=0x6fe4380, line=11
+    objectId=0x6fe4510, line=11
+    objectId=0x7a30b30, line=11
+
+Thread 0x6fe4538
+
+  locals:
+
+Thread 0x6fe46b0
+
+  locals:
+
+Thread 0x6fe4828
+  at java.lang.Object.wait(J)V (Native Method)
+  at java.lang.ref.ReferenceQueue.remove(J)Ljava/lang/ref/Reference; (ReferenceQueue.java:143)
+  at java.lang.ref.ReferenceQueue.remove()Ljava/lang/ref/Reference; (ReferenceQueue.java:164)
+  at java.lang.ref.Finalizer$FinalizerThread.run()V (Finalizer.java:209)
+
+  locals:
+    objectId=0x6fe49b0, line=1
+    objectId=0x6fe49a8, line=1
+    objectId=0x6fe49b0, line=2
+    objectId=0x6fe4828, line=3
+    objectId=0x6fe49c8, line=3
+
+Thread 0x6fe49d0
+  at java.lang.Object.wait(J)V (Native Method)
+  at java.lang.Object.wait()V (Object.java:502)
+  at java.lang.ref.Reference.tryHandlePending(Z)Z (Reference.java:191)
+  at java.lang.ref.Reference$ReferenceHandler.run()V (Reference.java:153)
+
+  locals:
+    objectId=0x6fe4b48, line=1
+    objectId=0x6fe4b48, line=2
+    objectId=0x6fe49d0, line=3
+
+Thread 0x6fe4ba0
+  at java.lang.OutOfMemoryError.<init>()V (OutOfMemoryError.java:48)
+  at java.util.Arrays.copyOf([Ljava/lang/Object;ILjava/lang/Class;)[Ljava/lang/Object; (Arrays.java:3210)
+  at java.util.Arrays.copyOf([Ljava/lang/Object;I)[Ljava/lang/Object; (Arrays.java:3181)
+  at java.util.ArrayList.grow(I)V (ArrayList.java:261)
+  at java.util.ArrayList.ensureExplicitCapacity(I)V (ArrayList.java:235)
+  at java.util.ArrayList.ensureCapacityInternal(I)V (ArrayList.java:227)
+  at java.util.ArrayList.add(Ljava/lang/Object;)Z (ArrayList.java:458)
+  at cn.think.in.java.memory.analyzer.Demo.main([Ljava/lang/String;)V (Demo.java:18)
+
+  locals:
+    objectId=0x74ca900, line=1
+    objectId=0x6fd54d0, line=1
+    objectId=0x74ca900, line=2
+    objectId=0x6fe4b50, line=3
+    objectId=0x6fe4b50, line=6
+    objectId=0x6924b50, line=6
+    objectId=0x6fe4b50, line=7
+

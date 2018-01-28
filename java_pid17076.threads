@@ -1,0 +1,83 @@
+Thread 0x7170618
+  at java.lang.Thread.__ejt_nmp_sleep(J)V (Native Method)
+  at java.lang.Thread.sleep(J)V (Unknown Source)
+  at com.jprofiler.agent.probe.ProbeHandler$a.run()V (ejt:1113)
+
+  locals:
+    objectId=0x7170618, line=2
+
+Thread 0x7170ac8
+
+  locals:
+    objectId=0x715a810, line=-1
+
+Thread 0x7170c90
+
+  locals:
+    objectId=0x7170c40, line=-1
+    objectId=0x7163fd8, line=-1
+    objectId=0x716ca48, line=-1
+    objectId=0x7170c78, line=-1
+    objectId=0x7170ac8, line=-1
+    objectId=0x7163fd8, line=-1
+
+Thread 0x7170e08
+  at java.lang.Thread.__ejt_nmp_sleep(J)V (Native Method)
+  at java.lang.Thread.sleep(J)V (Unknown Source)
+  at com.jprofiler.agent.sampler.Sampler.run()V (ejt:84)
+
+  locals:
+    objectId=0x7170e08, line=2
+    objectId=0x7170f80, line=2
+
+Thread 0x7170f88
+
+  locals:
+
+Thread 0x7171100
+
+  locals:
+
+Thread 0x7171278
+  at java.lang.Object.wait(J)V (Native Method)
+  at java.lang.ref.ReferenceQueue.remove(J)Ljava/lang/ref/Reference; (ReferenceQueue.java:143)
+  at java.lang.ref.ReferenceQueue.remove()Ljava/lang/ref/Reference; (ReferenceQueue.java:164)
+  at java.lang.ref.Finalizer$FinalizerThread.run()V (Finalizer.java:209)
+
+  locals:
+    objectId=0x7171400, line=1
+    objectId=0x71713f8, line=1
+    objectId=0x7171400, line=2
+    objectId=0x7171278, line=3
+    objectId=0x7171418, line=3
+
+Thread 0x7171420
+  at java.lang.Object.wait(J)V (Native Method)
+  at java.lang.Object.wait()V (Object.java:502)
+  at java.lang.ref.Reference.tryHandlePending(Z)Z (Reference.java:191)
+  at java.lang.ref.Reference$ReferenceHandler.run()V (Reference.java:153)
+
+  locals:
+    objectId=0x7171598, line=1
+    objectId=0x7171598, line=2
+    objectId=0x7171420, line=3
+
+Thread 0x71715e8
+  at java.lang.OutOfMemoryError.<init>()V (OutOfMemoryError.java:48)
+  at java.util.Arrays.copyOf([Ljava/lang/Object;ILjava/lang/Class;)[Ljava/lang/Object; (Arrays.java:3210)
+  at java.util.Arrays.copyOf([Ljava/lang/Object;I)[Ljava/lang/Object; (Arrays.java:3181)
+  at java.util.ArrayList.grow(I)V (ArrayList.java:261)
+  at java.util.ArrayList.ensureExplicitCapacity(I)V (ArrayList.java:235)
+  at java.util.ArrayList.ensureCapacityInternal(I)V (ArrayList.java:227)
+  at java.util.ArrayList.add(Ljava/lang/Object;)Z (ArrayList.java:458)
+  at cn.think.in.java.jvm.memory.analyzer.Demo.main([Ljava/lang/String;)V (Demo.java:18)
+
+  locals:
+    objectId=0x7753940, line=1
+    objectId=0x7164df8, line=1
+    objectId=0x7753940, line=2
+    objectId=0x71715a0, line=3
+    objectId=0x71715a0, line=6
+    objectId=0x6b9a738, line=6
+    objectId=0x71715a0, line=7
+
