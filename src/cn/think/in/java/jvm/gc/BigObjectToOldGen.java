@@ -36,6 +36,13 @@ public class BigObjectToOldGen {
   }
 
   /**
+   * -XX:+PrintGCDetails -XX:+PrintGCDateStamps -XX:+PrintHeapAtGC
+   *
+   * VM_ARGS='-Xmx128m -Xms128m -Xmn64m -XX:+PrintGCDetails -XX:+PrintGCDateStamps  -Xloggc:$HOME/gc.log '
+   */
+
+
+  /**
    * -XX:PretenureSizeThreshold=3145728
    -XX:+PrintGCDetails
    -XX:SurvivorRatio=8
