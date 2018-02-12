@@ -1,5 +1,7 @@
 package cn.think.in.java.jvm.gc;
 
+import java.util.Map;
+
 public class TestHeapGC {
 
 
@@ -21,6 +23,16 @@ public class TestHeapGC {
     b2 = new byte[1024 * 1024 * 6]; // 进行一次新生代 GC
 
 //    System.gc();
+
+    for (Map.Entry<Thread, StackTraceElement[]> a:Thread.getAllStackTraces().entrySet()){
+      Thread thread = a.getKey();
+      StackTraceElement [] s = a.getValue();
+      System.out.println(thread.getName());
+      for(StackTraceElement e : s){
+        System.out.println(e.getClassName());
+      }
+      System.out.println();
+    }
   }
 
   /**
