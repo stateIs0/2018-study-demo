@@ -1,6 +1,10 @@
 package cn.think.in.java.jvm.gc;
 
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.Map;
+import sun.management.snmp.jvminstr.JvmThreadInstanceEntryImpl;
 
 public class TestHeapGC {
 
@@ -24,11 +28,11 @@ public class TestHeapGC {
 
 //    System.gc();
 
-    for (Map.Entry<Thread, StackTraceElement[]> a:Thread.getAllStackTraces().entrySet()){
+    for (Map.Entry<Thread, StackTraceElement[]> a : Thread.getAllStackTraces().entrySet()) {
       Thread thread = a.getKey();
-      StackTraceElement [] s = a.getValue();
+      StackTraceElement[] s = a.getValue();
       System.out.println(thread.getName());
-      for(StackTraceElement e : s){
+      for (StackTraceElement e : s) {
         System.out.println(e.getClassName());
       }
       System.out.println();
@@ -48,12 +52,23 @@ public class TestHeapGC {
    */
 }
 
-class A{
+class A {
 
-  public static void main(String[] args) {
-    System.out.println(Thread.currentThread().getStackTrace());
-    while (true){
-
-    }
+  A() throws NoSuchMethodException {
   }
+
+  public static void main(String[] args)
+      throws NoSuchMethodException, IllegalAccessException, InstantiationException, InvocationTargetException {
+    for (StackTraceElement ste : Thread.currentThread().getStackTrace()) {
+      System.out.println(ste);
+    }
+    System.out.println(Thread.currentThread().getStackTrace());
+
+    Method method = JvmThreadInstanceEntryImpl.class.getDeclaredMethod("getJvmThreadInstStackTrace", null);
+    method.setAccessible(true);
+    Constructor<?>[] arr = JvmThreadInstanceEntryImpl.class.getDeclaredConstructors();
+    System.out.println(method.invoke(arr[0].newInstance(), null));
+  }
+
+
 }

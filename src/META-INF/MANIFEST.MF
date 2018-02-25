@@ -1,0 +1,5 @@
+Manifest-Version: 1.0
+Can-Redefine-Classes: true
+Agent-Class: cn.think.in.java.clazz.loader.asm.agent.PreMainTraceAgent
+Can-Retransform-Classes: true
+Premain-Class: cn.think.in.java.clazz.loader.asm.agent.PreMainTraceAgent

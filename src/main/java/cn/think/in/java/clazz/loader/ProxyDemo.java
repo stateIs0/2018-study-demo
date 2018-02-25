@@ -3,6 +3,8 @@ package cn.think.in.java.clazz.loader;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ProxyDemo {
 
@@ -37,10 +39,16 @@ public class ProxyDemo {
     }
   }
 
-  public static void main(String[] args) {
-    System.getProperties().put("sun.misc.ProxyGenerator.saveGeneratedFiles", "true");
-    IHello h = (IHello) new DynamicProxy().bind(new Hello());
-    h.sayHello();
+  public static void main(String[] args) throws InterruptedException {
+    List list = new ArrayList();
+    while (true) {
+      System.getProperties().put("sun.misc.ProxyGenerator.saveGeneratedFiles", "true");
+      IHello h = (IHello) new DynamicProxy().bind(new Hello());
+      h.sayHello();
+      Thread.sleep(100);
+      list.add(h);
+    }
+
   }
 
 }
