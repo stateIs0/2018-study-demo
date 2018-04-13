@@ -15,9 +15,9 @@ public class MaxTenuringThresholdTest {
     allocation1 = new byte[_1MB / 4];
     // 什么时候进入老年代取决于 XX:MaxTenuringThreshold
     allocation2 = new byte[4 * _1MB];
-    allocation3 = new byte[4 * _1MB];
+    allocation3 = new byte[4 * _1MB]; // 第一次gc
     allocation3 = null;
-    allocation3 = new byte[4 * _1MB];
+    allocation3 = new byte[4 * _1MB];// 第二次 gc
 
   }
 

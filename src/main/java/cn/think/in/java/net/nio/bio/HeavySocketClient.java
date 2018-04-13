@@ -1,4 +1,4 @@
-package cn.think.in.java.concurrent.nio.bio;
+package cn.think.in.java.net.nio.bio;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.InetSocketAddress;
 import java.net.Socket;
+import java.time.LocalDateTime;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.locks.LockSupport;
@@ -42,8 +43,8 @@ public class HeavySocketClient {
         LockSupport.parkNanos(sleep_time);
         writer.print("!");
         LockSupport.parkNanos(sleep_time);
-
-        writer.println();
+        writer.print("" + LocalDateTime.now());
+//        writer.println();
         writer.flush();
 
         reader = new BufferedReader(new InputStreamReader(client.getInputStream()));

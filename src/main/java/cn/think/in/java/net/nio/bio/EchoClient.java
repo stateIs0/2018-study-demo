@@ -1,4 +1,4 @@
-package cn.think.in.java.concurrent.nio.bio;
+package cn.think.in.java.net.nio.bio;
 
 import java.io.BufferedReader;
 import java.io.IOException;

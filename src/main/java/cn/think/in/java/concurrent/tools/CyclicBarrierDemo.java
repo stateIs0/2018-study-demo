@@ -1,4 +1,4 @@
-package cn.think.in.java.tools;
+package cn.think.in.java.concurrent.tools;
 
 import java.util.Random;
 import java.util.concurrent.BrokenBarrierException;
@@ -100,6 +100,10 @@ public class CyclicBarrierDemo {
 //
 //      }
     }
+
+    System.out.println(cyclic.getParties());
+    System.out.println(cyclic.getNumberWaiting());
+    System.out.println(cyclic.isBroken());
   }
 
 }

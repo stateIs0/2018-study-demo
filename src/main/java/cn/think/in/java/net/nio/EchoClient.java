@@ -1,4 +1,4 @@
-package cn.think.in.java.concurrent.nio;
+package cn.think.in.java.net.nio;
 
 import java.nio.ByteBuffer;
 import java.util.LinkedList;

@@ -82,7 +82,7 @@ public class IntLock implements Runnable {
   }
 
 
-  public static void main(String[] args) throws InterruptedException {
+  public static void ma1in(String[] args) throws InterruptedException {
 
     /**
      * 这部分代码主要是针对 lockInterruptibly 方法，该方法在线程发生死锁的时候可以中断线程。让线程放弃锁。
@@ -102,5 +102,28 @@ public class IntLock implements Runnable {
     t2.interrupt();
     // t2 线程中断，抛出异常，并放开锁。没有完成任务
     // t1 顺利完成任务。
+  }
+
+  public static void ma11in(String[] args) {
+    int a = 100;
+    do {
+
+      switch (a) {
+        case 1:
+          System.out.println("1");
+          break;
+        case 2:
+          System.out.println(2);
+          break;
+        case 100:
+          System.out.println(100);
+          break;
+      }
+    } while (a >= 100);
+  }
+
+  public static void main(String[] args) {
+      System.out.println(8 & 4);
+
   }
 }
