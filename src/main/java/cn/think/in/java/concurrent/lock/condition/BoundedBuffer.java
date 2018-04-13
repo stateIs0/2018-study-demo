@@ -47,4 +47,39 @@ public class BoundedBuffer {
       lock.unlock();
     }
   }
+
+  public static void main(String[] args) {
+    BoundedBuffer boundedBuffer = new BoundedBuffer();
+
+    new Thread(new Runnable() {
+      @Override
+      public void run() {
+        for (int i = 0; i < 101; i++) {
+          try {
+            boundedBuffer.put(i);
+          } catch (InterruptedException e) {
+            e.printStackTrace();
+          }
+        }
+
+      }
+    }).start();
+
+
+    new Thread(new Runnable() {
+      @Override
+      public void run() {
+        try {
+          while (true) {
+            System.out.println(boundedBuffer.take());
+          }
+        } catch (InterruptedException e) {
+          e.printStackTrace();
+        }
+
+      }
+    }).start();
+
+
+  }
 }
