@@ -74,7 +74,7 @@ class AA {
 
 class Driver2 {
 
-  public static void main(String[] args) throws InterruptedException {
+  public static void m1ain(String[] args) throws InterruptedException {
     CountDownLatch doneSignal = new CountDownLatch(10);
     Executor e = Executors.newFixedThreadPool(10);
     for (int i = 0; i < 10; ++i) {
@@ -104,4 +104,5 @@ class WorkerRunnable implements Runnable {
   void doWork(int i) {
     System.out.println("work " + System.nanoTime());
   }
+
 }

@@ -1,4 +1,4 @@
-package cn.think.in.java.pool;
+package cn.think.in.java.concurrent.pool.pool;
 
 import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
@@ -17,7 +17,7 @@ import java.util.concurrent.RecursiveTask;
 public class CountTask extends RecursiveTask<Long> {
 
   /**
-   * 阀值
+   * 阈值
    */
   static final int THRESHOLD = 10000;
   long start;
@@ -45,7 +45,7 @@ public class CountTask extends RecursiveTask<Long> {
     } else {
       // 2000
       long step = (start + end) / 100;
-      ArrayList<CountTask> subTasks = new ArrayList<>();
+      ArrayList<Object> subTasks = new ArrayList<>();
       long pos = start;
       for (int i = 0; i < 100; i++) {
         long lastOne = pos + step;
@@ -59,7 +59,8 @@ public class CountTask extends RecursiveTask<Long> {
         subTask.fork();// fork
       }
 
-      for (CountTask t : subTasks) {
+      for (Object a : subTasks) {
+        CountTask t = (CountTask)a;
         sum += t.join();
       }
     }

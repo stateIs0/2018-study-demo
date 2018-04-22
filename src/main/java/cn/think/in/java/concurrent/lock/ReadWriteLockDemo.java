@@ -4,19 +4,25 @@ import java.util.Random;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
+import java.util.concurrent.locks.ReentrantReadWriteLock.ReadLock;
+import java.util.concurrent.locks.ReentrantReadWriteLock.WriteLock;
 
 public class ReadWriteLockDemo {
 
   static Lock lock = new ReentrantLock();
   static ReentrantReadWriteLock reentrantReadWriteLock = new ReentrantReadWriteLock();
 
-  static Lock readLock = reentrantReadWriteLock.readLock();
-  static Lock writeLock = reentrantReadWriteLock.writeLock();
+  static ReadLock readLock = reentrantReadWriteLock.readLock();
+  static WriteLock writeLock = reentrantReadWriteLock.writeLock();
 
   int value;
 
   public Object handleRead(Lock lock) throws InterruptedException {
     try {
+      readLock.lock();
+      readLock.unlock();
+      writeLock.lock();
+      writeLock.unlock();
       lock.lock();
       // 模拟读操作，读操作的耗时越多，读写锁的优势就越明显
       Thread.sleep(1000);
@@ -29,7 +35,7 @@ public class ReadWriteLockDemo {
   public void handleWrite(Lock lock, int index) throws InterruptedException {
     try {
       lock.lock();
-      Thread.sleep(1000); // 模拟写操作
+      Thread.sleep(121222000); // 模拟写操作
       value = index;
 
     } finally {

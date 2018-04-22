@@ -1,4 +1,4 @@
-package cn.think.in.java.tools;
+package cn.think.in.java.concurrent.pool;
 
 import java.lang.reflect.InvocationTargetException;
 
@@ -34,22 +34,19 @@ class MyThreadLocal<T> extends ThreadLocal<T> {
   }
 }
 
-enum A {
-  hello();
+class  BBB {
 
-  private A() {
+  public static void main(String[] args) {
+    System.out.println(16 >>> 2);
   }
 }
 
 
-class AAA {
 
-
-}
 
 class BB {
 
-  public static void main(String[] args)
+  public static void ma1in(String[] args)
       throws IllegalAccessException, InstantiationException, InvocationTargetException {
 //    AAA.class.newInstance();
 //
@@ -60,6 +57,10 @@ class BB {
 //    System.out.println("");
 //    for (Constructor constructor)
 
+  }
+
+  public static void main(String[] args) {
+    System.out.println("hello");
   }
 
 }

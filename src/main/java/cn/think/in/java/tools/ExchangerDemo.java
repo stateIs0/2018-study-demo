@@ -23,7 +23,7 @@ public class ExchangerDemo {
 
   static ExecutorService threadPool = Executors.newFixedThreadPool(2);
 
-  public static void main(String[] args) {
+  public static void ma1in(String[] args) {
     threadPool.execute(new Runnable() {
       @Override
       public void run() {
@@ -40,17 +40,31 @@ public class ExchangerDemo {
     threadPool.execute(new Runnable() {
       @Override
       public void run() {
-        try {
+//        try {
           String b = "银行流水B";
-          String a = exgr.exchange(b);
-          System.out.println("A 和 B 数据是否一致： " + a.equals(b) + ", A 录入的是：" + a + ", B 录入的是：" + b);
-        } catch (InterruptedException e) {
-          e.printStackTrace();
-        }
+//          String a = exgr.exchange(b);
+//          System.out.println("A 和 B 数据是否一致： " + a.equals(b) + ", A 录入的是：" + a + ", B 录入的是：" + b);
+//        } catch (InterruptedException e) {
+//          e.printStackTrace();
+//        }
       }
     });
 
     threadPool.shutdown();
+  }
+
+  public static void main(String[] args) throws InterruptedException {
+    int a= 0,b =0;
+    for (; ; ) {
+      System.err.println(++a);
+      for (; ; ) {
+        Thread.sleep(1000);
+        System.out.println(++b);
+        if (b % 5 == 0) {
+          break;
+        }
+      }
+    }
   }
 
 }

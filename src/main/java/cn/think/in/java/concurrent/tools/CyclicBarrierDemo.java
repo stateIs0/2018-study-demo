@@ -81,7 +81,7 @@ public class CyclicBarrierDemo {
   }
 
 
-  public static void main(String[] args) {
+  public static void main(String[] args) throws BrokenBarrierException, InterruptedException {
     final int n = 10;
 
     Thread[] allSoldier = new Thread[n];
@@ -95,15 +95,31 @@ public class CyclicBarrierDemo {
       System.out.println("士兵" + i + "报道");
       allSoldier[i] = new Thread(new Soldier(cyclic, "士兵" + i));
       allSoldier[i].start();
-//      if (i== 5){ // 会导致所有的线程全部停止 BrokenBarrierException * 9 + InterruptedException * 1
-//        allSoldier[i].interrupt();
-//
-//      }
+      if (i== 5){ // 会导致所有的线程全部停止 BrokenBarrierException * 9 + InterruptedException * 1
+        allSoldier[i].interrupt();
+
+      }
     }
+
+    cyclic.await();
 
     System.out.println(cyclic.getParties());
     System.out.println(cyclic.getNumberWaiting());
     System.out.println(cyclic.isBroken());
+  }
+
+  static CyclicBarrierDemo demo = new CyclicBarrierDemo();
+
+  public static void mai2n(String[] args) {
+    CyclicBarrierDemo in = demo;
+    changeDemo();
+    System.out.println(in);
+    System.out.println(demo);
+    System.out.println(in == demo);
+  }
+
+  private static void changeDemo() {
+    demo = new CyclicBarrierDemo();
   }
 
 }

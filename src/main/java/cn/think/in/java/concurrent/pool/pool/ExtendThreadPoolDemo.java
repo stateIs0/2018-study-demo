@@ -1,4 +1,4 @@
-package cn.think.in.java.pool;
+package cn.think.in.java.concurrent.pool.pool;
 
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
@@ -68,7 +68,7 @@ public class ExtendThreadPoolDemo {
 
     for (int i = 0; i < 5; i++) {
       MyTask myTask = new MyTask("TASK-GEYM-CXS" + i);
-      es.execute(myTask);
+      es.submit(myTask);
 
     }
     es.shutdown();

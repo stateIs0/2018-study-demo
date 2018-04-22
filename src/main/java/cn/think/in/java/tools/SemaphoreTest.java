@@ -26,15 +26,23 @@ public class SemaphoreTest implements Runnable {
     }
   }
 
-  public static void main(String[] args) {
+  public static void ma1in(String[] args) {
     ExecutorService exec = Executors.newFixedThreadPool(20);
     final SemaphoreTest test = new SemaphoreTest();
     for (int i = 0; i < 20; i++) {
       exec.execute(test);
     }
-
-
   }
+
+  public static void main(String[] args) {
+    System.out.println(255 << 1);
+    System.out.println(4 >>> 1);
+    System.out.println(1  << 10);
+  }
+}
+
+class A extends SemaphoreTest{
+
 }
 
 

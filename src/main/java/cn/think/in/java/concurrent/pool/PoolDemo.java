@@ -1,4 +1,4 @@
-package cn.think.in.java.pool;
+package cn.think.in.java.concurrent.pool;
 
 import java.util.concurrent.Callable;
 import java.util.concurrent.Executors;

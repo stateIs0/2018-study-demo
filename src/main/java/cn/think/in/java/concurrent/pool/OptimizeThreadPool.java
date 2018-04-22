@@ -1,4 +1,4 @@
-package cn.think.in.java.pool;
+package cn.think.in.java.concurrent.pool;
 
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.ExecutionException;

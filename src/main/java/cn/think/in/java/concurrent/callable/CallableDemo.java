@@ -41,6 +41,23 @@ public class CallableDemo {
 
     System.out.println("主线程在执行任务");
 
+    for (int i = 0; i < 10; i++) {
+      final int a = i;
+      new Thread(new Runnable() {
+        @Override
+        public void run() {
+
+          try {
+            System.out.println("线程 ： " + a  + " ： --》"+ result.get());
+          } catch (InterruptedException e) {
+            e.printStackTrace();
+          } catch (ExecutionException e) {
+            e.printStackTrace();
+          }
+        }
+      }).start();
+    }
+
     try {
       System.out.println("task运行结果" + result.get());
     } catch (InterruptedException e) {
@@ -109,7 +126,7 @@ class Task2 implements Callable<Future<Integer>> {
   }
 }
 
-class AAAA{
+class AAAA {
 
   public static void main(String[] args) throws Exception {
     Callable callable = new Callable() {
@@ -126,18 +143,15 @@ class AAAA{
     System.out.println(futureTask.get());
 
 
-
-
   }
 };
 
 
-class B{
+class B {
 
   public static void main(String[] args) {
     for (int i = 0; i < 10; i++) {
       System.out.println(ThreadLocalRandom.current().nextInt(2));
-
 
       new Random().nextInt();
     }

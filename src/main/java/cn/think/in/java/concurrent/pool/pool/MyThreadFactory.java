@@ -1,6 +1,5 @@
-package cn.think.in.java.pool;
+package cn.think.in.java.concurrent.pool.pool;
 
-import cn.think.in.java.pool.ThreadPoolDemo.MyTask;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.SynchronousQueue;
 import java.util.concurrent.ThreadFactory;

@@ -1,4 +1,4 @@
-package cn.think.in.java.tools;
+package cn.think.in.java.concurrent.lock;
 
 import java.util.concurrent.locks.LockSupport;
 
