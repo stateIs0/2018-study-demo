@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:myTag="http://www.cxs.com/schema/user"
+  xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.cxs.com/schema/user http://www.cxs.com/schema/user.xsd">
+
+  <myTag:user id="testBean" userName="name" email="wjs@163.com"/>
+</beans><!--spring在解析xml的时候，会根据namespaceURI来判断是spring的默认标签，还是用户定义的标签-->
+
+<!--
+
+protected void parseBeanDefinitions(Element root, BeanDefinitionParserDelegate delegate) {
+    if (delegate.isDefaultNamespace(root)) {
+        NodeList nl = root.getChildNodes();
+        for (int i = 0; i < nl.getLength(); i++) {
+            Node node = nl.item(i);
+            if (node instanceof Element) {
+                Element ele = (Element) node;
+                if (delegate.isDefaultNamespace(ele)) {
+                    parseDefaultElement(ele, delegate);
+                }else {
+                    delegate.parseCustomElement(ele);
+                }
+            }
+        }
+    }else {
+        delegate.parseCustomElement(root);
+    }
+}
+
+public BeanDefinition parseCustomElement(Element ele, BeanDefinition containingBd) {
+    String namespaceUri = getNamespaceURI(ele);
+    NamespaceHandler handler = this.readerContext.getNamespaceHandlerResolver().resolve(namespaceUri);
+    if (handler == null) {
+        error("Unable to locate Spring NamespaceHandler for XML schema namespace [" + namespaceUri + "]", ele);
+        return null;
+    }
+    return handler.parse(ele, new ParserContext(this.readerContext, this, containingBd));
+}
+
+-->
