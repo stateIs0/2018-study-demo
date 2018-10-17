@@ -86,26 +86,26 @@ class UserHandler implements InvocationHandler {
 }
 
 
-class UserTest{
-
-  public static void main(String[] args) {
-    UserService service = new UserServiceImpl();
-    UserHandler handler = new UserHandler(service);
-
-    UserService proxy = (UserService) Proxy.newProxyInstance(service.getClass().getClassLoader(),
-        new Class[]{UserService.class}, handler);
-
-    proxy.txMethod2();
-
-    System.out.println("====================");
-
-    proxy.txMethod1();
-
-    System.out.println("=====================");
-
-    proxy.noTxMethod();
-
-    System.out.println("===========================");
-
-  }
-}
+//class UserTest{
+//
+//  public static void main(String[] args) {
+//    UserService service = new UserServiceImpl();
+//    UserHandler handler = new UserHandler(service);
+//
+//    UserService proxy = (UserService) ProxyInstance(service.getClass().getClassLoader(),
+//        new Class[]{UserService.class}, handler);
+//
+//    proxy.txMethod2();
+//
+//    System.out.println("====================");
+//
+//    proxy.txMethod1();
+//
+//    System.out.println("=====================");
+//
+//    proxy.noTxMethod();
+//
+//    System.out.println("===========================");
+//
+//  }
+//}

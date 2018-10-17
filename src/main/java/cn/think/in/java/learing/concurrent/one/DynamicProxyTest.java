@@ -6,7 +6,7 @@ import java.lang.reflect.Proxy;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DynamicProxyTest implements InvocationHandler {
+public class DynamicProxyTest implements InvocationHandler, UserService {
 
   private UserService userService;
 
@@ -24,8 +24,15 @@ public class DynamicProxyTest implements InvocationHandler {
   }
 
   public Object getProxy() {
-    return Proxy.newProxyInstance(Thread.currentThread().getContextClassLoader(),
+    Object o =  Proxy.newProxyInstance(Thread.currentThread().getContextClassLoader(),
         userService.getClass().getInterfaces(), this);
+
+    return o;
+  }
+
+  @Override
+  public void function(String... args) {
+
   }
 }
 
@@ -80,8 +87,15 @@ class UserServiceTest implements UserService {
 class Main {
 
   static Object generateProxy() {
-    return Proxy.newProxyInstance(Thread.currentThread().getContextClassLoader(),
-        UserServiceTest.class.getInterfaces(), new DynamicProxyTest(new UserServiceTest()));
+    UserService proxy1 =  (UserService)Proxy.newProxyInstance(Thread.currentThread().getContextClassLoader(),
+        UserServiceTest.class.getInterfaces(),
+        (new DynamicProxyTest(new UserServiceTest())));
+
+    UserService proxy2 = (UserService)Proxy.newProxyInstance(Thread.currentThread().getContextClassLoader(),
+        UserServiceTest.class.getInterfaces(), new DynamicProxyTest(proxy1));
+
+    return proxy2;
+
   }
 
   void noStaticFunction() {
@@ -89,7 +103,7 @@ class Main {
 
   public static void main(String[] args) {
 //    UserService userService = new UserServiceTest();
-//    DynamicProxyTest test = new DynamicProxyTest(userService);
+//    DynamicProxyTest Test = new DynamicProxyTest(userService);
 
     UserService proxy = (UserService) generateProxy();
     proxy.function("caoxiansheng", "mengxinagren", "wuyuanyuan");

@@ -23,19 +23,19 @@ public class PermTest {
     int i = 0;
     try {
       for (i = 0; i < 100000454; i++) {
-        Object o = Proxy.newProxyInstance(Thread.currentThread().getContextClassLoader(),
-            new Class[]{Runnable.class},
-            new InvocationHandler() {
-              @Override
-              public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-                return new Runnable() {
-                  @Override
-                  public void run() {
-                    System.out.println("hello");
-                  }
-                };
-              }
-            });
+//        Object o = ProxyInstance(Thread.currentThread().getContextClassLoader(),
+//            new Class[]{Runnable.class},
+//            new InvocationHandler() {
+//              @Override
+//              public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+//                return new Runnable() {
+//                  @Override
+//                  public void run() {
+//                    System.out.println("hello");
+//                  }
+//                };
+//              }
+//            });
       }
 
     } catch (Error e) {

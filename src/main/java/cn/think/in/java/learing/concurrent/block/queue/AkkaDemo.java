@@ -12,7 +12,7 @@ public class AkkaDemo {
     ActorRef test1 = system.actorOf(Props.create(Actor.class), "test1");
     ActorRef test2 = system.actorOf(Props.create(Actor.class), "test2");
     for (int i = 3; i < 100000; i++) {
-//      system.actorOf(Props.create(Actor.class), "test" + i).tell("test" + i + " msg", null);
+//      system.actorOf(Props.create(Actor.class), "Test" + i).tell("Test" + i + " msg", null);
       test1.tell("test1 msg", null);
     }
   }
