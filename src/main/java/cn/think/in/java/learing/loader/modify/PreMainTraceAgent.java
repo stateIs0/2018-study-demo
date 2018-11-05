@@ -22,7 +22,7 @@ public class PreMainTraceAgent {
     });
 
 //    JavaCompiler compiler = ToolProvider.getSystemJavaCompiler();
-//    int compilationResult = compiler.run(null, null, null, '/path/to/Test.java');
+//    int compilationResult = compiler.run(null, null, null, '/path/to/Test2.java');
   }
 
 }

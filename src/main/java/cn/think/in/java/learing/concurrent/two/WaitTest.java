@@ -17,7 +17,7 @@ public class WaitTest {
     }).start();
 //    new Thread(() -> {
 //      try {
-//        waitTest.test();
+//        waitTest.Test();
 //      } catch (InterruptedException e) {
 //        e.printStackTrace();
 //      }

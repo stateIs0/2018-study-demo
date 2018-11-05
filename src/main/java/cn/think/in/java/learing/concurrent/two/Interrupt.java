@@ -47,7 +47,7 @@ class Interrupt3 {
         try {
           Thread.sleep(2000);
         } catch (InterruptedException e) {
-          System.err.println("Interrupt When Sleep");
+          System.err.println("Interrupt When cn.think.in.java.learing.Sleep");
           // 由于在 sleep 之间中断线程导致抛出异常，此时，他会清楚中断位，所以需要在这里重新设置中断位，下次循环则会直接判断中断标记，从而break。
           Thread.currentThread().interrupt();
           // 该方法会清除中断状态，导致上面的一行代码失效

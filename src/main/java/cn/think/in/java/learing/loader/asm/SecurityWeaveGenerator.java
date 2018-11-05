@@ -39,7 +39,7 @@ public class SecurityWeaveGenerator {
 class Acco1untMain {
 
   /**
-   * -javaagent:E:\self\demo\out\artifacts\test\test.jar=cxsTest
+   * -javaagent:E:\self\demo\out\artifacts\Test\Test.jar=cxsTest
    */
   public static void main(String[] args)
       throws ClassNotFoundException, InterruptedException, IllegalAccessException, InstantiationException, NoSuchMethodException, InvocationTargetException {
@@ -72,7 +72,7 @@ class Acco1untMain {
 
 //      Account account = new Account();
 //      account.operation();
-//      bccount.test();
+//      bccount.Test();
 
       Object account = clazz.newInstance();
       account.getClass().getMethod("operation", new Class[]{}).invoke(account);
@@ -86,7 +86,7 @@ class Acco1untMain {
 class Ac1countMain {
 
   /**
-   * -javaagent:E:\self\demo\out\artifacts\test\test.jar=cxsTest
+   * -javaagent:E:\self\demo\out\artifacts\Test\Test.jar=cxsTest
    */
   public static void main(String[] args)
       throws InterruptedException {
@@ -104,7 +104,7 @@ class JVMTIThread {
     for (VirtualMachineDescriptor vmd : list) {
       if (vmd.displayName().endsWith("AccountMain")) {
         VirtualMachine virtualMachine = VirtualMachine.attach(vmd.id());
-        virtualMachine.loadAgent("E:\\self\\demo\\out\\artifacts\\test\\test.jar ", "cxs");
+        virtualMachine.loadAgent("E:\\self\\demo\\out\\artifacts\\Test\\Test.jar ", "cxs");
         System.out.println("ok");
         virtualMachine.detach();
         break;

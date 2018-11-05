@@ -14,12 +14,18 @@ public class NioClient {
   private Selector selector;
 
   public void init(String ip, int port) throws IOException {
-    SocketChannel channel = SocketChannel.open();
-    channel.configureBlocking(false);
     selector = SelectorProvider.provider().openSelector();
-    channel.connect(new InetSocketAddress(ip, port));
-    channel.register(selector, SelectionKey.OP_CONNECT);
 
+
+    SocketChannel channel1 = SocketChannel.open();
+    channel1.configureBlocking(false);
+    channel1.connect(new InetSocketAddress(ip, port));
+    channel1.register(selector, SelectionKey.OP_CONNECT);
+
+    SocketChannel channel2 = SocketChannel.open();
+    channel2.configureBlocking(false);
+    channel2.connect(new InetSocketAddress(ip, port));
+    channel2.register(selector, SelectionKey.OP_CONNECT);
   }
 
   public void working() throws IOException {

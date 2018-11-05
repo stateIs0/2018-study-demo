@@ -2,15 +2,20 @@ package cn.think.in.java.learing.concurrent.test;
 
 import java.util.Arrays;
 import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.ScheduledFuture;
+import java.util.concurrent.ScheduledThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 
 public class QuickSort {
 
   public static void main(String[] args) {
-    int[] a = {1, 2, 4, 5, 7, 4, 5, 3, 9, 0};
+    int[] a = {12, 3, 4, 5, 3, 1, 7, 0, 122};
     System.out.println(Arrays.toString(a));
     quickSort(a);
     System.out.println(Arrays.toString(a));
-    Executors.newSingleThreadExecutor();
+
+
   }
 
   public static void quickSort(int[] a) {
@@ -53,80 +58,43 @@ public class QuickSort {
     int p = a[i];
     a[i] = a[low];
     a[low] = p;
+
+    System.out.println(Arrays.toString(a));
     //5, 对key左边的数快排
     quickSort(a, low, i - 1);
     //6, 对key右边的数快排
     quickSort(a, i + 1, high);
   }
-}
 
-
-class QuickSortCxs {
-
-
-  public static void main(String[] args) {
-    int[] a = {1, 2, 4, 5, 7, 4, 5, 3, 9, 0};
-
-    quick(a, 0, a.length - 1);
-
-//    System.out.println(Arrays.toString(a));
-    sort(a);
-
-  }
-
-  static void quick(int[] arr, int low, int hight) {
-
+  void f(int[] a, int low, int hight) {
     if (low > hight) {
       return;
     }
-
     int i = low;
     int j = hight;
-    int key = arr[low];
 
+    int key = a[low];
     while (i < j) {
-      // 从右往左找到第一个比 key 小的数
-      while (i < j && arr[j] > key) {
+      while (i < j && a[j] > key) {
         j--;
       }
-
-      // 从左往右找到第一个比 key 大的数
-      while (i < j && arr[i] <= key) {
+      while (i < j && a[i] >= key) {
         i++;
       }
 
-      if (i < j) { // 交换位置
-        int p = arr[i];
-        arr[i] = arr[j];
-        arr[j] = p;
-
+      if (i < j) {
+        int p = a[i];
+        a[i] =a[j];
+        a[j] = p;
       }
     }
 
-    int p = arr[low];
-    arr[low] = arr[i];
-    arr[i] = p;
+    int p = a[i];
+    a[i] = a[low];
+    a[low] = p;
 
-    quick(arr, low, i - 1);
-    quick(arr, i + 1, hight);
-
-
-  }
-
-  public static void sort(int[] a) {
-
-    for (int i = 0; i < a.length; i++) {
-      for (int j = 0; j < a.length; j++) {
-        if (a[j] >= a[i]) {
-          int p = a[i];
-          a[i] = a[j];
-          a[j] = p;
-        }
-      }
-    }
-
-    System.out.println(Arrays.toString(a));
-
+    quickSort(a, low, i - 1);
+    quickSort(a, i + 1, hight);
   }
 }
 
@@ -138,7 +106,48 @@ class QuickSortCxs {
 
 
 
+class A {
 
+  static void f(int[] a, int low, int high) {
+    if (low > high) {
+      return;
+    }
+    int i = a[low];
+    int j = a[high];
+
+    int key = a[low];
+
+    while (i < j) {
+      while (i < j && a[j] < key) {
+        j--;
+      }
+      while (i < j && a[i] >= key) {
+        i++;
+      }
+      if (i < j) {
+        int p = a[i];
+        a[i] = a[j];
+        a[j] = p;
+      }
+    }
+    int p = a[low];
+    a[low] = a[i];
+    a[i] = p;
+
+    f(a, low, i - 1);
+    f(a, i + 1, high);
+
+
+  }
+
+  public static void main(String[] args) {
+    int[] a = {12, 3, 4, 5, 3, 1, 7, 0, 122};
+    f(a, 0, a.length - 1);
+    System.out.println(Arrays.toString(a));
+
+  }
+
+}
 
 
 

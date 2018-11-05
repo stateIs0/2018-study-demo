@@ -20,6 +20,8 @@ public class EchoServer {
     server = AsynchronousServerSocketChannel.open().bind(new InetSocketAddress(PORT));
   }
 
+
+
   public void start() {
     System.out.println("Server listen on " + PORT);
     // 注册事件和事件完成后的处理器
@@ -66,6 +68,8 @@ public class EchoServer {
   }
 
   public static void main(String[] args) throws IOException, InterruptedException {
+
+    System.out.println(1<<31);
     new EchoServer().start();
     // 主线程可以继续自己的行为
     while (true) {

@@ -8,7 +8,7 @@
 //
 ////这里是包类，声明一个包使用的公共类，强调的是包访问权限
 //class PkgClass{
-//  public void test(){
+//  public void Test(){
 //  }
 //}
 ////包常量，只运行包内访问，适用于分“包”开发
