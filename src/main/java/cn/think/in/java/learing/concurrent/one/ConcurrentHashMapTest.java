@@ -43,7 +43,7 @@ public class ConcurrentHashMapTest {
 //    System.out.println();
 //
 //
-//    ConcurrentHashMap map = new ConcurrentHashMap();
+    ConcurrentHashMap map = new ConcurrentHashMap();
 //    for (int i = 0; i < 100; i++) {
 //      int a = i;
 //      new Thread(() -> {

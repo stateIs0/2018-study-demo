@@ -9,6 +9,8 @@ public class ClassLoaderDemo {
     int[] a1 = a;
     synchronized (a) {
 
+      ClassLoaderDemo.class.getClassLoader().getResourceAsStream(ProxyDemo.Hello.class.getName());
+
     }
     Arrays.stream(a);
   }

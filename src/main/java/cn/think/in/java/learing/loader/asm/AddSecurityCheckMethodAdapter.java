@@ -4,7 +4,9 @@ import jdk.internal.org.objectweb.asm.Label;
 import jdk.internal.org.objectweb.asm.MethodVisitor;
 import jdk.internal.org.objectweb.asm.Opcodes;
 
-public class AddSecurityCheckMethodAdapter extends MethodVisitor {
+public class AddSecurityCheckMethodAdapter
+    extends MethodVisitor
+{
 
   public AddSecurityCheckMethodAdapter(MethodVisitor mv) {
     super(Opcodes.ASM5, mv);

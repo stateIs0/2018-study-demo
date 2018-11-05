@@ -16,11 +16,6 @@ public class ThreadPrintDemo {
       for (; 100 > cxsNum.get(); ) {
         if (!flag && (cxsNum.get() == 0 || cxsNum.incrementAndGet() % 2 == 0)) {
 
-          try {
-            Thread.sleep(100);// 防止打印速度过快导致混乱
-          } catch (InterruptedException e) {
-            //NO
-          }
 
           System.out.println(cxsNum.get());
           flag = true;
@@ -32,12 +27,6 @@ public class ThreadPrintDemo {
     Thread t2 = new Thread(() -> {
       for (; 100 > cxsNum.get(); ) {
         if (flag && (cxsNum.incrementAndGet() % 2 != 0)) {
-
-          try {
-            Thread.sleep(100);// 防止打印速度过快导致混乱
-          } catch (InterruptedException e) {
-            //NO
-          }
 
           System.out.println(cxsNum.get());
           flag = false;
@@ -60,8 +49,8 @@ class ThreadPrintDemo2 {
     Thread t1 = new Thread(demo2::print1);
     Thread t2 = new Thread(demo2::print2);
 
-    t1.start();
     t2.start();
+    t1.start();
 
   }
 
