@@ -19,24 +19,27 @@ public class ReadWriteLockDemo {
 
   public Object handleRead(Lock lock) throws InterruptedException {
     try {
-      readLock.lock();
-      readLock.unlock();
-      writeLock.lock();
-      writeLock.unlock();
-      lock.lock();
+//      readLock.lock();
+//      readLock.unlock();
+//      writeLock.lock();
+//      writeLock.unlock();
+//      lock.lock();
       // 模拟读操作，读操作的耗时越多，读写锁的优势就越明显
       Thread.sleep(1000);
       return value;
     } finally {
-      lock.unlock();
+//      lock.unlock();
     }
   }
 
   public void handleWrite(Lock lock, int index) throws InterruptedException {
     try {
-      lock.lock();
-      Thread.sleep(121222000); // 模拟写操作
-      value = index;
+//      lock.lock();
+//      Thread.sleep(121222000); // 模拟写操作
+//      value = index;
+
+      writeLock.lock();
+      writeLock.unlock();
 
     } finally {
       lock.unlock();

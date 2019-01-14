@@ -6,7 +6,7 @@ package cn.think.in.java.learing.leetcode;
  * @author 莫那·鲁道
  * @date 2018/11/7-下午11:27
  */
-public class Demo1 {
+public class Demo1ReverseNodeList {
 
     private static class Node {
         Integer item;

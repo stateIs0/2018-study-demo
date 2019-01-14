@@ -26,7 +26,7 @@ public class SemaphoreTest implements Runnable {
     }
   }
 
-  public static void ma1in(String[] args) {
+  public static void main(String[] args) {
     ExecutorService exec = Executors.newFixedThreadPool(20);
     final SemaphoreTest test = new SemaphoreTest();
     for (int i = 0; i < 20; i++) {
@@ -34,7 +34,7 @@ public class SemaphoreTest implements Runnable {
     }
   }
 
-  public static void main(String[] args) {
+  public static void main0(String[] args) {
     System.out.println(255 << 1);
     System.out.println(4 >>> 1);
     System.out.println(1  << 10);

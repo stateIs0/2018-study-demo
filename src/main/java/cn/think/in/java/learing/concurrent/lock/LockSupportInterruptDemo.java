@@ -17,12 +17,12 @@ public class LockSupportInterruptDemo {
 
     public void run() {
       synchronized (u) {
-        LockSupport.park(this);
+//        LockSupport.park(this);
         System.out.println("in " + getName());
         // wait
-//        LockSupport.park();
+        LockSupport.park();
         if (Thread.interrupted()) {
-          System.err.println(getName() + "被中断了");
+          System.out.println(getName() + "被中断了");
         }
       }
       System.out.println(getName() + "执行结束了");

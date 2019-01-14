@@ -25,7 +25,7 @@ public class InterruptedDemo {
     Thread t1 = new Thread(task);
     Thread t2 = new Thread(task);
 
-//    t1.start();
+    t1.start();
     Thread.sleep(100);
     t2.start();
 
