@@ -1,4 +1,4 @@
-package cn.think.in.java.learing;
+package net;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -16,11 +16,14 @@ import java.util.Map;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadPoolExecutor;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 import com.sun.net.httpserver.HttpServer;
 
 import org.apache.commons.io.IOUtils;
+
 
 
 /**
@@ -34,7 +37,7 @@ public class HttpServerDemo {
 
     public static void main(String[] arg) throws Exception {
         HttpServer server = HttpServer.create(new InetSocketAddress(8001), 0);
-        server.createContext("/test", new TestHandler());
+        server.createContext("/", new TestHandler());
         server.start();
     }
 
@@ -45,12 +48,27 @@ public class HttpServerDemo {
             threadPoolExecutor.execute((() -> {
                 try {
                     System.out.println(Thread.currentThread().getId());
-                    String response = "hello world";
-                    response = getRes();
+                    byte[] response = null;
 
                     //获得查询字符串(get)
                     String queryString = exchange.getRequestURI().getQuery();
+                    String path = exchange.getRequestURI().getPath();
                     Map<String, String> queryStringInfo = formData2Dic(queryString);
+                    if (path.equals("/")) {
+                        response = getRes().getBytes();
+
+                    } else if (path.contains("css") || path.contains("js")) {
+                        response = getRes(path).getBytes();
+
+                    } else if (path.contains("favicon.ico")) {
+                        exchange.getResponseHeaders().put("Content-Type", Arrays.asList(new String[]{"application/json;charset=UTF-8"}));
+                        response = JSON.toJSONBytes(getRes(path));
+                    } else {
+                        JSONObject j = new JSONObject();
+                        j.put("userPermission", "hello-8081");
+
+                        response = j.toJSONString().getBytes();
+                    }
                     System.out.println(queryStringInfo);
                     //获得表单提交数据(post)
                     String postString = IOUtils.toString(exchange.getRequestBody());
@@ -58,7 +76,7 @@ public class HttpServerDemo {
 
                     exchange.sendResponseHeaders(200, 0);
                     OutputStream os = exchange.getResponseBody();
-                    os.write(response.getBytes());
+                    os.write(response);
                     os.close();
                 } catch (IOException ie) {
                     ie.printStackTrace();
@@ -68,6 +86,7 @@ public class HttpServerDemo {
             }));
         }
     }
+    ///Users/cxs/code/2018-study-demo/src/main/resource/static/static/js/manifest.041be5373e6b0742419d.js
 
     public static Map<String, String> formData2Dic(String formData) {
         System.out.println(formData);
@@ -94,8 +113,8 @@ public class HttpServerDemo {
     static String getRes() {
 
         try {
-            FileInputStream i = new FileInputStream(new File("index.html"));
-            BufferedReader br   = new BufferedReader(new InputStreamReader(i));
+            FileInputStream i = new FileInputStream(new File("/Users/cxs/code/2018-study-demo/src/main/resource/static/static/index.html"));
+            BufferedReader br = new BufferedReader(new InputStreamReader(i));
             StringBuilder r = new StringBuilder();
             String l = null;
             while ((l = br.readLine()) != null) {
@@ -111,5 +130,24 @@ public class HttpServerDemo {
 
         return null;
     }
+    static String getRes(String path) {
 
+        try {
+            FileInputStream i = new FileInputStream(new File("/Users/cxs/code/2018-study-demo/src/main/resource/static/static" + path));
+            BufferedReader br = new BufferedReader(new InputStreamReader(i));
+            StringBuilder r = new StringBuilder();
+            String l = null;
+            while ((l = br.readLine()) != null) {
+                r.append(l);
+            }
+            return r.toString();
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
 }

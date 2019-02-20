@@ -102,6 +102,7 @@ class JVMTIThread {
       throws IOException, AttachNotSupportedException, AgentLoadException, AgentInitializationException {
     List<VirtualMachineDescriptor> list = VirtualMachine.list();
     for (VirtualMachineDescriptor vmd : list) {
+      System.out.println(vmd.displayName());
       if (vmd.displayName().endsWith("AccountMain")) {
         VirtualMachine virtualMachine = VirtualMachine.attach(vmd.id());
         virtualMachine.loadAgent("E:\\self\\demo\\out\\artifacts\\Test\\Test.jar ", "cxs");
